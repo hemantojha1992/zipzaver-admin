@@ -1,0 +1,2 @@
+import { defineConfig } from "@playwright/test";
+export default defineConfig({ testDir: "./e2e", timeout: 180_000, expect: { timeout: 30_000 }, workers: 1, fullyParallel: false, reporter: "list", use: { baseURL: "http://localhost:3000", trace: "retain-on-failure", screenshot: "only-on-failure" }, webServer: { command: "npm.cmd run dev:emulator", url: "http://localhost:3000/login", timeout: 180_000, reuseExistingServer: false } });

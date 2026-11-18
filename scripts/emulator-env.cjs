@@ -1,0 +1,9 @@
+const PROJECT_ID = "zipzaver-admin-emulator";
+if (process.env.ZIPZAVER_FIREBASE_PROJECT_ID && process.env.ZIPZAVER_FIREBASE_PROJECT_ID !== PROJECT_ID) throw new Error("EMULATOR_PROJECT_REQUIRED");
+if (process.env.GOOGLE_CLOUD_PROJECT && process.env.GOOGLE_CLOUD_PROJECT !== PROJECT_ID) throw new Error("EMULATOR_PROJECT_REQUIRED");
+process.env.ZIPZAVER_FIREBASE_PROJECT_ID = PROJECT_ID;
+process.env.GOOGLE_CLOUD_PROJECT = PROJECT_ID;
+process.env.GCLOUD_PROJECT = PROJECT_ID;
+process.env.FIRESTORE_EMULATOR_HOST = "127.0.0.1:8088";
+process.env.FIREBASE_AUTH_EMULATOR_HOST = "127.0.0.1:9099";
+module.exports = { PROJECT_ID };

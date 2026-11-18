@@ -1,0 +1,1 @@
+import{SettlementsView}from"@/components/modules/read-only-view";export default async function Page({searchParams}:{searchParams:Promise<{cursor?:string}>}){return <SettlementsView cursor={(await searchParams).cursor}/>}

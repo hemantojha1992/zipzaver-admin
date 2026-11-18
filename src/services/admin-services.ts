@@ -1,0 +1,1 @@
+import type{AdminRepositories}from"@/repositories/contracts";export class ReadOnlyAdminServices{constructor(readonly repositories:AdminRepositories){}/* Phase 2A intentionally exposes no business mutation methods. */}

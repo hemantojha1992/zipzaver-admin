@@ -1,0 +1,1 @@
+import type{ReactNode}from"react";import{AdminShell}from"@/components/layout/admin-shell";import{requireAdminPrincipal}from"@/lib/auth/session";export default async function ProtectedLayout({children}:{children:ReactNode}){const principal=await requireAdminPrincipal();return <AdminShell roles={[...principal.roles]}>{children}</AdminShell>}

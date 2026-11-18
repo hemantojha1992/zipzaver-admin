@@ -1,0 +1,1 @@
+export interface PageRequest{cursor?:string;limit:number;search?:string;filters?:Readonly<Record<string,string>>}export interface PageResult<T>{items:T[];nextCursor?:string}export interface AuditContext{adminUid:string;reason?:string;correlationId:string}export interface Repository<T>{getById(id:string):Promise<T|null>;list(request:PageRequest):Promise<PageResult<T>>}

@@ -1,0 +1,11 @@
+export type IsoDate=string|null;
+export interface Customer{id:string;name:string;maskedPhone:string;maskedEmail:string|null;blocked:boolean;profileCompleted:boolean;createdAt:IsoDate;lastLoginAt:IsoDate}
+export type KycState="draft"|"submitted"|"pendingReview"|"approved"|"rejected"|"resubmissionRequired"|"unknown";
+export interface AgreementSummary{status:string;version:string|null;language:string|null;acceptedAt:IsoDate}
+export interface Rider{id:string;name:string;maskedPhone:string;maskedEmail:string|null;vehicleType:string;vehicleNumberMasked:string;status:string;online:boolean;available:boolean;kycState:KycState;currentBookingId:string|null;agreement:AgreementSummary;createdAt:IsoDate;hasDocumentImages:boolean}
+export interface LocationSummary{address:string}
+export type PaymentTiming="payAfterDelivery"|"prepaid"|"unknown";
+export type AssignmentPaymentReadiness="assignmentReady"|"awaitingTrustedPayment"|"paymentDue"|"unknown";
+export interface Booking{id:string;reference:string;customerId:string;customerMaskedPhone:string;riderId:string|null;riderName:string|null;pickup:LocationSummary;drop:LocationSummary;stopCount:number;status:string;finalFarePaise:number|null;paymentTiming:PaymentTiming;paymentState:string|null;assignmentPaymentReadiness:AssignmentPaymentReadiness;waiting:boolean;cancelled:boolean;returned:boolean;resolutionType:string|null;createdAt:IsoDate;updatedAt:IsoDate;acceptedAt:IsoDate;pickedUpAt:IsoDate;deliveredAt:IsoDate;returnedAt:IsoDate;cancelledAt:IsoDate}
+export interface Agreement{id:string;riderId:string;acceptedByUid:string|null;requiredVersion:string;requiredHash:string;acceptedVersion:string;acceptedHash:string|null;acceptedLanguage:string|null;status:string;acceptedAt:IsoDate;reacceptanceRequired:boolean}
+export interface Settlement{id:string;riderId:string;bookingId:string;entryType:string;amountPaise:number;weekId:string|null;cycle:string;processing:string;status:string;completedAt:IsoDate;ledger:{openingPaise:number;deliveryEarningsPaise:number;stopsPaise:number;waitingPaise:number;cancellationPaise:number;returnPaise:number;incentivesPaise:number;promoDeductionsPaise:number;adjustmentsPaise:number;taxTdsPaise:number;payoutsPaise:number;closingPaise:number}}

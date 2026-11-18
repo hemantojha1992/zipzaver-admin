@@ -1,0 +1,1 @@
+import{ModulePlaceholder}from"@/components/modules/module-placeholder";export default function Page(){return <ModulePlaceholder eyebrow="System" title="Settings" description="Reserved for secure system-level configuration after contracts and approval workflows are defined." capabilities={["environment visibility","feature controls","configuration governance"]}/>}

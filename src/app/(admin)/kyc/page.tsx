@@ -1,0 +1,1 @@
+import{KycControlView}from"@/components/modules/kyc-control-view";export default async function Page({searchParams}:{searchParams:Promise<{status?:string}>}){return <KycControlView status={(await searchParams).status}/>}

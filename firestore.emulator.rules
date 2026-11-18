@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /support_reports/{ticketId} {
+      allow read: if request.auth != null
+        && resource.data.reporterUid == request.auth.uid;
+      allow write: if false;
+    }
+    match /admin_support_private_notes/{noteId} {
+      allow read, write: if false;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

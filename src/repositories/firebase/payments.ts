@@ -1,0 +1,1 @@
+import"server-only";import{getFirebaseAdminFirestore}from"@/lib/firebase/admin";import{mapPaymentIntent}from"@/canonical/adapter";export async function listPaymentIntents(limit=50){const snapshot=await getFirebaseAdminFirestore().collection("payment_intents").limit(Math.max(1,Math.min(limit,100))).get();return snapshot.docs.map(d=>mapPaymentIntent(d.id,d.data()))}

@@ -1,0 +1,38 @@
+{
+  "name": "zipzaver-admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=0",
+    "test": "vitest run --exclude src/emulator/** --exclude e2e/**",
+    "test:watch": "vitest",
+    "emulator:seed": "node scripts/emulator-seed.cjs",
+    "emulator:reset": "node scripts/emulator-reset.cjs",
+    "emulator:verify": "node scripts/emulator-reset.cjs && node scripts/emulator-seed.cjs && vitest run src/emulator",
+    "test:emulator": "firebase emulators:exec --only auth,firestore --project zipzaver-admin-emulator \"npm.cmd run emulator:verify\"",
+    "test:e2e": "playwright test",
+    "test:e2e:emulator": "firebase emulators:exec --only auth,firestore --project zipzaver-admin-emulator \"npm.cmd run emulator:reset && npm.cmd run emulator:seed && npm.cmd run test:e2e\"",
+    "dev:emulator": "set ZIPZAVER_FIREBASE_PROJECT_ID=zipzaver-admin-emulator&& set GOOGLE_CLOUD_PROJECT=zipzaver-admin-emulator&& set FIRESTORE_EMULATOR_HOST=127.0.0.1:8088&& set FIREBASE_AUTH_EMULATOR_HOST=127.0.0.1:9099&& set NEXT_PUBLIC_FIREBASE_PROJECT_ID=zipzaver-admin-emulator&& set NEXT_PUBLIC_FIREBASE_API_KEY=emulator-only&& set NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=localhost&& set NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=unused&& set NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=000000000000&& set NEXT_PUBLIC_FIREBASE_APP_ID=emulator-admin&& set NEXT_PUBLIC_USE_FIREBASE_EMULATORS=true&& set ADMIN_MUTATIONS_ENABLED=true&& set ADMIN_SUPPORT_MUTATIONS_ENABLED=true&& set ADMIN_KYC_MUTATIONS_ENABLED=true&& set ADMIN_CUSTOMER_MUTATIONS_ENABLED=true&& set ADMIN_RIDER_MUTATIONS_ENABLED=true&& set ADMIN_SETTLEMENT_MUTATIONS_ENABLED=true&& set ADMIN_PAYMENT_MUTATIONS_ENABLED=true&& set ADMIN_PRICING_MUTATIONS_ENABLED=true&& set ADMIN_INCENTIVE_MUTATIONS_ENABLED=true&& set ADMIN_SERVICE_AREA_MUTATIONS_ENABLED=true&& set ADMIN_BOOKING_MUTATIONS_ENABLED=true&& set ADMIN_INCIDENT_MUTATIONS_ENABLED=true&& set ADMIN_ALERT_MUTATIONS_ENABLED=true&& set ADMIN_USER_MUTATIONS_ENABLED=true&& next dev"
+  },
+  "dependencies": {
+    "firebase": "^12.1.0",
+    "firebase-admin": "^14.2.0",
+    "next": "16.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.1",
+    "typescript": "^5",
+    "vitest": "^3.2.4"
+  }
+}
